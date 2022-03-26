@@ -132,7 +132,7 @@ class Node:
                 self.known.remove(other)
         return
 
-    def add_others(self, ports: []):
+    def add_others(self, ports: list):
         for p in ports:
             self.known.add("http://localhost:"+str(p)+"/")
         print(self.known)    

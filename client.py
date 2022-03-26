@@ -8,14 +8,14 @@ def buy_ticket(route: str):
 	t1 = time.time()
 
 	with xmlrpc.client.ServerProxy("http://localhost:8000/") as proxy:
-	    key,n = proxy.get_nouce(route)
+		key,n = proxy.get_nouce(route)
 	# %%
 	key2 = compute(key,n)
 
 
 	with xmlrpc.client.ServerProxy("http://localhost:8001/") as proxy:
-	    outcome = proxy.get_ticket(key2)
-	    print(outcome)
+		outcome = proxy.get_ticket(key2)
+		print(outcome)
 	t2 = time.time()
 	print(t2 - t1)
 	return outcome
