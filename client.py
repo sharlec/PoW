@@ -13,7 +13,7 @@ def buy_ticket(route: str):
 	key2 = compute(key,n)
 
 
-	with xmlrpc.client.ServerProxy("http://localhost:8000/") as proxy:
+	with xmlrpc.client.ServerProxy("http://localhost:8001/") as proxy:
 	    outcome = proxy.get_ticket(key2)
 	    print(outcome)
 	t2 = time.time()
