@@ -10,7 +10,7 @@ import os
 S1 = 10 # num of digits of the random keywords
 S2 = 16 # num of digits of the tickets
 n = 5
-ports = [8000,8001,8002,8003,8004]
+ports = [8001,8002,8003,8004,8005]
 threshhold = len(ports)/2
 # %%
 class Node:
@@ -152,7 +152,6 @@ if __name__ == "__main__":
     route_file = sys.argv[2]
     name = sys.argv[3]
     ports.remove(port)
-
     node = Node(port, S1, S2, n, name,ports)
     node.loading_routes(route_file)
     node._start()
