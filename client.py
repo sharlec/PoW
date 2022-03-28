@@ -29,4 +29,5 @@ def compute(key: str, n: int):
         i = i + 1
 
 
-# buy_ticket("K98665")
+if __name__ == "__main__":
+	buy_ticket("K98665")
