@@ -35,7 +35,6 @@ def compute(key: str, n: int):
             return key2
         i = i + 1
 
-
 class Box:
 	def __init__(self,tk):
 		self.routes = ( "K98665", 
