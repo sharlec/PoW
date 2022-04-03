@@ -1,10 +1,49 @@
-{% extends "base.html" %}
-{% block title %} Buy a ticket train {% endblock %}
+<!doctype html>
+<html>
+    <head>
+        <title>Train Ticket</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+        <style>
+            body {
+                background-image: url("{{ url_for('static', filename='train.jpg') }}");
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: cover;
+            }
 
-{% block content %}
+            #welcome {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                padding: 10px;
+                font-family: "Sofia", sans-serif;
+                font-size: 40px;
+                text-align: center;
+            }
 
-<h1>Welcome to the train ticket office!</h1>
+            #btn {
+                background-color: transparent;
+                color: black;
+                border: none;
+                font-size: 20px;
+            }
+              
+            #btn:hover {
+                background-color: rgba(255, 255, 255, 0.5);
+                color: black;
+            }
 
-<a href="/demo">Try our Demo</a>
+        </style>
+    </head>
+    <body>
+        <div id="welcome">
+            Welcome to the train ticket office!
+            <form action='{{ url_for("tickets") }}'>
+                <input type="submit" id="btn" value="Buy tickets now!"/>
+            </form>
+        </div>
+    </body>
+</html>
 
-{% endblock %}
+

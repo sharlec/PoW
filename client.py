@@ -2,21 +2,6 @@ import xmlrpc.client
 import hashlib
 import time
 
-def buy_ticket(route: str):
-	t1 = time.time()
-	with xmlrpc.client.ServerProxy("http://localhost:8001/") as proxy:
-		key,n = proxy.get_nouce(route)
-	# %%
-	key2 = compute(key,n)
-
-
-	with xmlrpc.client.ServerProxy("http://localhost:8002/") as proxy:
-		outcome = proxy.get_ticket(key2)
-		print(outcome)
-	t2 = time.time()
-	print(t2 - t1)
-	return outcome
-
 def compute(key: str, n: int):
     i = 0
     while True:
@@ -28,6 +13,19 @@ def compute(key: str, n: int):
             return key2
         i = i + 1
 
+def buy_ticket(route: str):
+	t1 = time.time()
+	with xmlrpc.client.ServerProxy("http://localhost:8001/") as proxy:
+		key,n = proxy.get_nouce(route)
+	key2 = compute(key,n)
+
+
+	with xmlrpc.client.ServerProxy("http://localhost:8002/") as proxy:
+		outcome = proxy.get_ticket(key2)
+		print(outcome)
+	t2 = time.time()
+	print(t2 - t1)
+	return outcome
 
 if __name__ == "__main__":
 	buy_ticket("K98665")
