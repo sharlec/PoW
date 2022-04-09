@@ -140,6 +140,9 @@ class Node:
     def boardcast_boarding(self, ticket:str):
         return
 
+    def check_remain(self, route_id:str):
+        return(self.routes_info[route_id]["Remain"])
+
     def _start(self):
         s = SimpleXMLRPCServer(("localhost", self.port), allow_none = True)
         s.register_instance(self)

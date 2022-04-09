@@ -1,28 +1,6 @@
 import xmlrpc.client
 import hashlib
 import time
-import tkinter as tk
-from tkinter.filedialog import askopenfilename, asksaveasfilename
-import tkinter as tk
-from PIL import ImageTk
-from tkinter import messagebox
-from tkinter import ttk
-from tkinter import *
-
-def buy_ticket(route: str):
-	t1 = time.time()
-	with xmlrpc.client.ServerProxy("http://localhost:8001/") as proxy:
-		key,n = proxy.get_nouce(route)
-	# %%
-	key2 = compute(key,n)
-
-
-	with xmlrpc.client.ServerProxy("http://localhost:8002/") as proxy:
-		outcome = proxy.get_ticket(key2)
-		print(outcome)
-	t2 = time.time()
-	print(t2 - t1)
-	return outcome
 
 def compute(key: str, n: int):
     i = 0
@@ -51,13 +29,18 @@ class Box:
 		if ticket != False:
 			messagebox.showinfo("showinfo", ticket)
 
-def main():
-	window = tk.Tk()
-	window.title('P2P Ticket System')       
-	window.geometry('500x400')    
-	tk.Label(window, text="Select Route").place(x=60, y=200, anchor='nw')
-	tt = Box(window)
-	window.mainloop()
+def buy_ticket(route: str):
+	t1 = time.time()
+	with xmlrpc.client.ServerProxy("http://localhost:8001/") as proxy:
+		key,n = proxy.get_nouce(route)
+	key2 = compute(key,n)
+
+	with xmlrpc.client.ServerProxy("http://localhost:8002/") as proxy:
+		outcome = proxy.get_ticket(key2)
+		print(outcome)
+	t2 = time.time()
+	print(t2 - t1)
+	return outcome
 
 if __name__ == "__main__":
-	main()
+	buy_ticket("K98665")
