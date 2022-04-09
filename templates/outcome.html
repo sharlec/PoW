@@ -18,6 +18,18 @@
                 transform: translate(-50%, -50%);
                 text-align: center;
             }
+            
+            #btn {
+                background-color: transparent;
+                color: black;
+                border: none;
+                font-size: 20px;
+            }
+              
+            #btn:hover {
+                background-color: rgba(255, 255, 255, 0.5);
+                color: black;
+            }
 
         </style>
 
@@ -27,6 +39,10 @@
             <h1>Congratulation!</h1>
             <p>Your ticket is:</p>
             <p>{{ticket}}</p>
+            <form action='{{ url_for("tickets") }}'>
+                <input type="submit" id="btn" value="Back to Dashboard"/>
+            </form>
         </div>
+
     </body>
 </html>
