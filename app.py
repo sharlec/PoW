@@ -20,4 +20,6 @@ def tickets():
 @app.route('/outcome/<trainID>/')
 def outcome(trainID):
     ticket = buy_ticket(trainID)
+    if ticket == False:
+        return render_template('fail.html')
     return render_template('outcome.html', ticket = ticket)
