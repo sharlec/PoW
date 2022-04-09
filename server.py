@@ -31,6 +31,7 @@ class Node:
         return ranKey
 
     def get_nouce(self, route:str):
+        print("The nouce is generated in this server and boardcast to others")
         if route in self.routes_info.keys():
             nouce = self.randomString(S1)
             self.add_nouce(nouce, route)
@@ -40,6 +41,7 @@ class Node:
             return False
 
     def get_ticket(self, key: str):
+        print("keyword validation and buy ticket request is processed in this server")
         nouce = key[:S1]
         if nouce not in self.nouce_map.keys():
             return False
