@@ -1,7 +1,8 @@
 from flask import Flask,render_template,url_for,redirect,request,session
-from client import buy_ticket
+from client import buy_ticket, check_remain
 
 app = Flask(__name__)
+routes = ["K98665", "K67332", "D66775"]
 
 @app.route('/')
 @app.route('/home')
@@ -10,7 +11,11 @@ def home():
 
 @app.route('/tickets')
 def tickets():
-    return render_template('tickets.html')
+    remains = []
+    for route in routes:
+        remain = check_remain(route)
+        remains.append(remain)
+    return render_template('tickets.html', remains = remains)
 
 @app.route('/outcome/<trainID>/')
 def outcome(trainID):

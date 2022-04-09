@@ -42,5 +42,10 @@ def buy_ticket(route: str):
 	print(t2 - t1)
 	return outcome
 
+def check_remain(route_id: str):
+	with xmlrpc.client.ServerProxy("http://localhost:8002/") as proxy:
+		remain = proxy.check_remain(route_id)
+	return remain
+
 if __name__ == "__main__":
 	buy_ticket("K98665")
