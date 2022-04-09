@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+    <head>
+        <title>No ticket</title>
+
+        <style>
+            body {
+                background-image: url("{{ url_for('static', filename='train.jpg') }}");
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: cover;
+            }
+
+            #center {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                text-align: center;
+            }
+            
+            #btn {
+                background-color: transparent;
+                color: black;
+                border: none;
+                font-size: 20px;
+            }
+              
+            #btn:hover {
+                background-color: rgba(255, 255, 255, 0.5);
+                color: black;
+            }
+
+        </style>
+
+    </head>
+    <body>
+        <div id="center">
+            <h1>Sorry, no ticket available now.</h1>
+            <p>{{ticket}}</p>
+            <form action='{{ url_for("tickets") }}'>
+                <input type="submit" id="btn" value="Back to Dashboard"/>
+            </form>
+        </div>
+
+    </body>
+</html>
